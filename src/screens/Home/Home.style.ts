@@ -12,4 +12,5 @@ export const Container = styled.View<{topInsert: number}>`
 
 export const H1 = styled.Text`
   font-size: 24px;
+  text-align: center;
 `;
