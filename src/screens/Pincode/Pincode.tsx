@@ -47,7 +47,7 @@ export const Pincode = observer(({navigation, route: {params}}: any) => {
 
   useEffect(() => {
     const init = async () => {
-      await onBiometryPass();
+      onBiometryPass();
       const password = await LocalLogin.getActiveCode();
       setPass(password);
     };
@@ -113,9 +113,11 @@ export const Pincode = observer(({navigation, route: {params}}: any) => {
         value={value}
         onChangeText={setValue}
       />
-      <FaceIDTouch>
-        <IFaceID />
-      </FaceIDTouch>
+      {LocalLogin.biometricEnabled && (
+        <FaceIDTouch onPress={onBiometryPass}>
+          <IFaceID />
+        </FaceIDTouch>
+      )}
     </AvoidingView>
   );
 });
